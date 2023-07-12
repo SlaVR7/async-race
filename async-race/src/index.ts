@@ -1,4 +1,4 @@
-import './SCSS/styles.scss';
-import createLayout from './TS/createLayout/garage';
+import './scss/styles.scss';
+import createLayout from './ts/createLayout/garage';
 
 createLayout();
