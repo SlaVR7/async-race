@@ -1,5 +1,4 @@
-import '../../../img/car.svg';
-import '../../../img/pngCar.png';
+import car from '../../../img/car.svg';
 
 export default class Car {
   constructor() {
@@ -20,7 +19,7 @@ export default class Car {
     stopCarButton.innerText = 'STOP';
 
     const carImage: HTMLImageElement = new Image();
-    carImage.src = '/src/img/car.svg';
+    carImage.src = car;
     carImage.classList.add('car');
 
     const border: HTMLDivElement = document.createElement('div');

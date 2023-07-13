@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "nodenext",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "strict": true,
@@ -7,5 +8,5 @@
     "target": "es5",
     "allowJs": true
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "modules.d.ts"]
 }
