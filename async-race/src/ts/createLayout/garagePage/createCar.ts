@@ -1,3 +1,6 @@
+import '../../../img/car.svg';
+import '../../../img/pngCar.png';
+
 export default class Car {
   constructor() {
     const selectCarButton: HTMLButtonElement = document.createElement('button');
@@ -16,19 +19,21 @@ export default class Car {
     stopCarButton.classList.add('smallMargins');
     stopCarButton.innerText = 'STOP';
 
-    const carImage: HTMLImageElement = document.createElement('img');
+    const carImage: HTMLImageElement = new Image();
+    carImage.src = '/src/img/car.svg';
     carImage.classList.add('car');
-    carImage.setAttribute('src', '/src/img/car.svg');
 
     const border: HTMLDivElement = document.createElement('div');
     border.classList.add('border');
 
-    const carsContainer: HTMLDivElement = document.querySelector('.carsContainer');
-    carsContainer.appendChild(selectCarButton);
-    carsContainer.appendChild(removeCarButton);
-    carsContainer.appendChild(startCarButton);
-    carsContainer.appendChild(stopCarButton);
-    carsContainer.appendChild(carImage);
-    carsContainer.appendChild(border);
+    const carsContainer: HTMLDivElement | null = document.querySelector('.carsContainer');
+    if (carsContainer) {
+      carsContainer.appendChild(selectCarButton);
+      carsContainer.appendChild(removeCarButton);
+      carsContainer.appendChild(startCarButton);
+      carsContainer.appendChild(stopCarButton);
+      carsContainer.appendChild(carImage);
+      carsContainer.appendChild(border);
+    }
   }
 }

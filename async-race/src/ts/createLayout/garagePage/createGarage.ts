@@ -12,20 +12,10 @@ export default function createGarage(): void {
   const carsContainer: HTMLDivElement = document.createElement('div');
   carsContainer.classList.add('carsContainer');
 
-  const prevPageButton: HTMLButtonElement = document.createElement('button');
-  prevPageButton.classList.add('smallMargins');
-  prevPageButton.innerText = 'PREV BUTTON';
-
-  const nextPageButton: HTMLButtonElement = document.createElement('button');
-  prevPageButton.classList.add('smallMargins');
-  nextPageButton.innerText = 'NEXT BUTTON';
-
   document.body.appendChild(garageWrapper);
   garageWrapper.appendChild(garageTitle);
   garageWrapper.appendChild(pageNumber);
   garageWrapper.appendChild(carsContainer);
-  garageWrapper.appendChild(prevPageButton);
-  garageWrapper.appendChild(nextPageButton);
 
   const car1 = new Car();
   const car2 = new Car();
