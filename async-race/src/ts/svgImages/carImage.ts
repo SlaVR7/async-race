@@ -1,8 +1,8 @@
-<?xml version="1.0" standalone="no"?>
+const car: string = `<?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="80px" height="60px" viewBox="0 0 1280.000000 640.000000"
+ width="100px" height="60px" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
  fill="currentColor" stroke="none">
@@ -99,3 +99,6 @@ l-15 -73 3006 7 c1653 4 3007 8 3009 9 1 1 -8 37 -20 81 -19 67 -22 105 -22
 61 239 98 16 10 -216 242 -234 235z"/>
 </g>
 </svg>
+`;
+
+export default car;

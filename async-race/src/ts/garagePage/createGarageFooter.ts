@@ -1,11 +1,11 @@
-export default function createFooter() {
+export default function createGarageFooter() {
   const prevPageButton: HTMLButtonElement = document.createElement('button');
   prevPageButton.classList.add('smallMargins');
-  prevPageButton.innerText = 'PREV BUTTON';
+  prevPageButton.innerText = 'PREV PAGE';
 
   const nextPageButton: HTMLButtonElement = document.createElement('button');
-  prevPageButton.classList.add('smallMargins');
-  nextPageButton.innerText = 'NEXT BUTTON';
+  nextPageButton.classList.add('smallMargins');
+  nextPageButton.innerText = 'NEXT PAGE';
 
   document.body.appendChild(prevPageButton);
   document.body.appendChild(nextPageButton);

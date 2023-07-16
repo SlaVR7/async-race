@@ -1,4 +1,5 @@
 import './scss/styles.scss';
-import createLayout from './ts/createLayout/garage';
+import createGaragePage from './ts/garagePage/createGarapePage';
+import createWinnersPage from './ts/winnersPage/createWinnersPage';
 
-createLayout();
+createGaragePage();

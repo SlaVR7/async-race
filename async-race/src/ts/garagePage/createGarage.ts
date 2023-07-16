@@ -1,10 +1,13 @@
-import Car from './createCar';
+import { getCars } from '../methods/getCars';
+import createCar from './createCar';
 
-export default function createGarage(): void {
+export default async function createGarage() {
   const garageWrapper: HTMLDivElement = document.createElement('div');
 
+  const numberOfCars = await getCars();
+
   const garageTitle: HTMLHeadingElement = document.createElement('h2');
-  garageTitle.innerText = 'Garage (777)';
+  garageTitle.innerText = `Garage (${numberOfCars.length})`;
 
   const pageNumber: HTMLHeadingElement = document.createElement('h3');
   pageNumber.innerText = 'Page #1';
@@ -17,11 +20,7 @@ export default function createGarage(): void {
   garageWrapper.appendChild(pageNumber);
   garageWrapper.appendChild(carsContainer);
 
-  const car1 = new Car();
-  const car2 = new Car();
-  const car3 = new Car();
-  const car4 = new Car();
-  const car5 = new Car();
-  const car6 = new Car();
-  const car7 = new Car();
+  for (let i = 0; i < numberOfCars.length; i += 1) {
+    await createCar(i);
+  }
 }
