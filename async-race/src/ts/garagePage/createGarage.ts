@@ -1,4 +1,4 @@
-import { getCars } from '../methods/getCars';
+import { getCars } from '../methods/get';
 import createCar from './createCar';
 
 export default async function createGarage() {

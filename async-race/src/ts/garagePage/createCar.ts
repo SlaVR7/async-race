@@ -1,16 +1,17 @@
-import { getCars } from '../methods/getCars';
+import { getCars } from '../methods/get';
 import car from '../svgImages/carImage';
-import flag from "../svgImages/flagImage";
+import flag from '../svgImages/flagImage';
+import showGarageLength from "./showGarageLength";
 
 export default async function createCar(carNumber: number) {
   const cars = await getCars();
 
   const selectCarButton: HTMLButtonElement = document.createElement('button');
-  selectCarButton.classList.add('smallMargins');
+  selectCarButton.className = 'smallMargins selectCarButton';
   selectCarButton.innerText = 'SELECT';
 
   const removeCarButton: HTMLButtonElement = document.createElement('button');
-  removeCarButton.classList.add('smallMargins');
+  removeCarButton.className = 'smallMargins removeCarButton';
   removeCarButton.innerText = 'REMOVE';
 
   const carName: HTMLSpanElement = document.createElement('span');
@@ -43,6 +44,7 @@ export default async function createCar(carNumber: number) {
 
   const carsContainer: HTMLDivElement | null = document.querySelector('.carsContainer');
   const carWrapper: HTMLDivElement = document.createElement('div');
+  carWrapper.setAttribute('carId', `${cars[carNumber].id}`);
   carWrapper.appendChild(carName);
   carWrapper.appendChild(selectCarButton);
   carWrapper.appendChild(removeCarButton);

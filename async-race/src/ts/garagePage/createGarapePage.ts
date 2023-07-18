@@ -3,7 +3,7 @@ import createCreateBlock from './createCreateBlock';
 import createGameProcessButtons from './createGameProcessButtons';
 import createGarage from './createGarage';
 import createGarageFooter from './createGarageFooter';
-import addGarageWinnersBtnListeners from './addGarageWinnersBtnListeners';
+import addButtonsListeners from '../methods/addButtonsListeners';
 
 export default function createGaragePage(): void {
   createMainPagesButtons();
@@ -11,6 +11,6 @@ export default function createGaragePage(): void {
   createGameProcessButtons();
   createGarage().then(() => {
     createGarageFooter();
-    addGarageWinnersBtnListeners();
+    addButtonsListeners();
   });
 }

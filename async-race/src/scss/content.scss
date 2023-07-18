@@ -35,3 +35,20 @@ td, th {
   border: 1px solid black;
   padding: 10px;
 }
+
+.selectAnimate {
+  animation: gradient-border .7s infinite;
+  border: 2px solid;
+}
+
+@keyframes gradient-border {
+  0%, 100% {
+    border-color: blue;
+  }
+  33% {
+    border-color: red;
+  }
+  66% {
+    border-color: green;
+  }
+}
