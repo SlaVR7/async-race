@@ -1,10 +1,10 @@
 import { getCars } from '../methods/get';
 import car from '../svgImages/carImage';
 import flag from '../svgImages/flagImage';
-import showGarageLength from "./showGarageLength";
 
 export default async function createCar(carNumber: number) {
   const cars = await getCars();
+  if (cars.length <= carNumber) return;
 
   const selectCarButton: HTMLButtonElement = document.createElement('button');
   selectCarButton.className = 'smallMargins selectCarButton';

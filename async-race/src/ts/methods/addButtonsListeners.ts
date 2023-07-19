@@ -4,6 +4,7 @@ import addNewCar from './addNewCar';
 import removeCar from './removeCar';
 import selectCar from './selectCar';
 import updateCar from './update';
+import { openPrevGarPage, openNextGarPage } from './changeGaragePage';
 
 export default function addButtonsListeners(): void {
   const garageButton: HTMLButtonElement | null = document.querySelector('#garageBtn');
@@ -12,6 +13,8 @@ export default function addButtonsListeners(): void {
   const removeButtons = document.querySelectorAll('.removeCarButton');
   const selectButtons = document.querySelectorAll('.selectCarButton');
   const updateButton = document.querySelector('.updateBtn');
+  const prevGaragePage = document.querySelector('#prevGaragePage');
+  const nextGaragePage = document.querySelector('#nextGaragePage');
 
   garageButton?.addEventListener('click', (): void => {
     document.body.innerHTML = '';
@@ -34,4 +37,7 @@ export default function addButtonsListeners(): void {
   });
 
   updateButton?.addEventListener('click', updateCar);
+
+  prevGaragePage?.addEventListener('click', openPrevGarPage);
+  nextGaragePage?.addEventListener('click', openNextGarPage);
 }
