@@ -4,6 +4,7 @@ import createCar from './createCar';
 export default async function createGarage() {
   if (!localStorage.getItem('page')) localStorage.setItem('page', '1');
   const page = localStorage.getItem('page');
+  const carPerPage: number = 7;
   const garageWrapper: HTMLDivElement = document.createElement('div');
 
   const numberOfCars = await getCars();
@@ -25,7 +26,7 @@ export default async function createGarage() {
   if (page) {
     const initialCar: number = 7 * (+page - 1);
 
-    for (let i = initialCar; i < initialCar + 7; i += 1) {
+    for (let i = initialCar; i < initialCar + carPerPage; i += 1) {
       await createCar(i);
     }
   }

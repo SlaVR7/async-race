@@ -11,6 +11,7 @@ export default function createGameProcessButtons(): void {
 
   const generateCarsButton: HTMLButtonElement = document.createElement('button');
   generateCarsButton.classList.add('smallMargins');
+  generateCarsButton.id = 'generateCars';
   generateCarsButton.innerText = 'GENERATE CARS';
 
   document.body.appendChild(gameProcessButtonsWrapper);
