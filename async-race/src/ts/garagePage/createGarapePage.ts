@@ -10,6 +10,7 @@ export default function createGaragePage(): void {
   createCreateBlock();
   createGameProcessButtons();
   createGarage().then(() => {
-    createGarageFooter().then(() => addButtonsListeners());
+    createGarageFooter()
+      .then(addButtonsListeners);
   });
 }

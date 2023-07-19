@@ -4,7 +4,7 @@ import addNewCar from './addNewCar';
 import removeCar from './removeCar';
 import selectCar from './selectCar';
 import updateCar from './update';
-import { openPrevGarPage, openNextGarPage } from './changeGaragePage';
+import { openPrevGarPage, openNextGarPage, openPrevWinPage, openNextWinPage } from './changePage';
 
 export default function addButtonsListeners(): void {
   const garageButton: HTMLButtonElement | null = document.querySelector('#garageBtn');
@@ -15,15 +15,19 @@ export default function addButtonsListeners(): void {
   const updateButton = document.querySelector('.updateBtn');
   const prevGaragePage = document.querySelector('#prevGaragePage');
   const nextGaragePage = document.querySelector('#nextGaragePage');
+  const prevWinnersPage = document.querySelector('#prevWinnersButton');
+  const nextWinnersPage = document.querySelector('#nextWinnersButton');
 
   garageButton?.addEventListener('click', (): void => {
     document.body.innerHTML = '';
     createGaragePage();
+    localStorage.setItem('pageType', 'garage');
   });
 
   winnersButton?.addEventListener('click', (): void => {
     document.body.innerHTML = '';
     createWinnersPage();
+    localStorage.setItem('pageType', 'winners');
   });
 
   createCarButton?.addEventListener('click', () => addNewCar());
@@ -40,4 +44,7 @@ export default function addButtonsListeners(): void {
 
   prevGaragePage?.addEventListener('click', openPrevGarPage);
   nextGaragePage?.addEventListener('click', openNextGarPage);
+
+  prevWinnersPage?.addEventListener('click', openPrevWinPage);
+  nextWinnersPage?.addEventListener('click', openNextWinPage);
 }

@@ -6,7 +6,7 @@ import createWinnersFooter from './createWinnersFooter';
 export default function createWinnersPage(): void {
   createMainPagesButtons();
   createTable().then(() => {
-    createWinnersFooter();
-    addButtonsListeners();
+    createWinnersFooter()
+      .then(addButtonsListeners);
   });
 }
