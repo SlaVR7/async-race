@@ -16,9 +16,9 @@ export default async function createTableItem(currentWinner: number) {
   const carCell = document.createElement('td');
   const carImage = document.createElement('div');
   carCell.appendChild(carImage);
-  carImage.classList.add('car');
+  // carImage.classList.add('car');
   const carColored = car.replace('currentColor', `${cars[currentWinner].color}`);
-  carImage.innerHTML = carColored.replace('100px', '50px');
+  carImage.innerHTML = carColored.replace('inherit', '50px');
 
   const nameCell = document.createElement('td');
   nameCell.innerText = currentCarName;

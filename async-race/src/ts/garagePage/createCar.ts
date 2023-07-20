@@ -18,12 +18,13 @@ export default async function createCar(carNumber: number) {
   carName.innerText = cars[carNumber].name;
 
   const startCarButton: HTMLButtonElement = document.createElement('button');
-  startCarButton.classList.add('smallMargins');
+  startCarButton.className = 'smallMargins startButton';
   startCarButton.innerText = 'START';
 
   const stopCarButton: HTMLButtonElement = document.createElement('button');
-  stopCarButton.classList.add('smallMargins');
+  stopCarButton.className = 'smallMargins stopButton';
   stopCarButton.innerText = 'STOP';
+  stopCarButton.setAttribute('disabled', 'true');
 
   const road: HTMLDivElement = document.createElement('div');
   road.classList.add('road');

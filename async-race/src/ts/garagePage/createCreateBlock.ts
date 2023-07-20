@@ -5,11 +5,19 @@ export default function createCreateBlock(): void {
   carNameInput.setAttribute('type', 'text');
   carNameInput.classList.add('smallMargins');
   carNameInput.id = 'carNameInput';
+  const nameValue = localStorage.getItem('nameInput');
+  if (nameValue !== null) {
+    carNameInput.value = nameValue;
+  }
 
   const carColorInput: HTMLInputElement = document.createElement('input');
   carColorInput.setAttribute('type', 'color');
   carColorInput.classList.add('smallMargins');
   carColorInput.id = 'carColorInput';
+  const colorValue = localStorage.getItem('colorInput');
+  if (colorValue !== null) {
+    carColorInput.value = colorValue;
+  }
 
   const createCarButton: HTMLButtonElement = document.createElement('button');
   createCarButton.classList.add('smallMargins');

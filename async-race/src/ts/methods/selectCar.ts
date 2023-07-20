@@ -9,9 +9,9 @@ export default function selectCar(event: Event) {
 
     allButtons.forEach((btn) => {
       if (carWrapper?.classList.contains('selectAnimate') && btn !== event.target && btn !== updateBtn) {
-        btn.disabled = true;
-      } else if (!carWrapper?.classList.contains('selectAnimate') && btn !== event.target && btn !== updateBtn) {
-        btn.disabled = false;
+        btn.setAttribute('disabled', 'true');
+      } else if (!carWrapper?.classList.contains('selectAnimate') && btn !== event.target && btn !== updateBtn && !btn.classList.contains('stopButton')) {
+        btn.removeAttribute('disabled');
       }
     });
   }
