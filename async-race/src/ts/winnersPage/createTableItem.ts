@@ -1,12 +1,13 @@
 import car from '../svgImages/carImage';
-import { getCars, getWinners, getCarName } from '../methods/get';
+import { getWinners, getCar } from '../methods/get';
 
 export default async function createTableItem(currentWinner: number) {
-  const cars = await getCars();
   const winners = await getWinners();
   if (winners.length <= currentWinner) return;
   const currentWinnerId = winners[currentWinner].id;
-  const currentCarName = await getCarName(currentWinnerId);
+  const currentCar = await getCar(currentWinnerId);
+  const currentCarName = currentCar.name;
+  const currentCarColor = currentCar.color;
   const table = document.querySelector('.table');
   const row = document.createElement('tr');
 
@@ -17,8 +18,8 @@ export default async function createTableItem(currentWinner: number) {
   const carImage = document.createElement('div');
   carCell.appendChild(carImage);
   // carImage.classList.add('car');
-  const carColored = car.replace('currentColor', `${cars[currentWinner].color}`);
-  carImage.innerHTML = carColored.replace('inherit', '50px');
+  const carColored = car.replace('currentColor', `${currentCarColor}`);
+  carImage.innerHTML = carColored.replace('100px', '51px').replace('50px', '30px');
 
   const nameCell = document.createElement('td');
   nameCell.innerText = currentCarName;

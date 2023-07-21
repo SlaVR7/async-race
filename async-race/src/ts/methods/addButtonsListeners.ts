@@ -7,6 +7,7 @@ import updateCar from './update';
 import { openPrevGarPage, openNextGarPage, openPrevWinPage, openNextWinPage } from './changePage';
 import generateCars from "../garagePage/generateCars";
 import startCar from "./startCar";
+import startRace from "./startRace";
 
 export default function addButtonsListeners(): void {
   const garageButton: HTMLButtonElement | null = document.querySelector('#garageBtn');
@@ -21,7 +22,8 @@ export default function addButtonsListeners(): void {
   const prevWinnersPage = document.querySelector('#prevWinnersButton');
   const nextWinnersPage = document.querySelector('#nextWinnersButton');
   const startButtons = document.querySelectorAll('.startButton');
-  const stopButtons = document.querySelectorAll('.stopButton');
+  const startRaceButton = document.querySelector('#startRaceButton');
+  const resetRaceButton = document.querySelector('#resetRaceButton');
   const nameInput: HTMLInputElement | null = document.querySelector('#carNameInput');
   const colorInput: HTMLInputElement | null = document.querySelector('#carColorInput');
 
@@ -63,4 +65,7 @@ export default function addButtonsListeners(): void {
   startButtons.forEach((btn) => {
     btn.addEventListener('click', (event) => startCar(event));
   });
+
+  startRaceButton?.addEventListener('click', startRace);
+  // resetRaceButton?.add
 }

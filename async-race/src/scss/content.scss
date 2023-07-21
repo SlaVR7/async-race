@@ -32,7 +32,7 @@ table {
 
 td, th {
   border: 1px solid black;
-  padding: 10px;
+  padding: 3px 10px;
 }
 
 .selectAnimate {
@@ -50,4 +50,14 @@ td, th {
   66% {
     border-color: green;
   }
+}
+
+.winnerMessage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  font-weight: bold;
+  color: gold;
 }

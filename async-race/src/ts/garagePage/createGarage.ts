@@ -7,6 +7,9 @@ export default async function createGarage() {
   const carPerPage: number = 7;
   const garageWrapper: HTMLDivElement = document.createElement('div');
 
+  const winnerMessage = document.createElement('div');
+  winnerMessage.classList.add('winnerMessage');
+
   const numberOfCars = await getCars();
 
   const garageTitle: HTMLHeadingElement = document.createElement('h2');
@@ -19,6 +22,7 @@ export default async function createGarage() {
   carsContainer.classList.add('carsContainer');
 
   document.body.appendChild(garageWrapper);
+  garageWrapper.appendChild(winnerMessage);
   garageWrapper.appendChild(garageTitle);
   garageWrapper.appendChild(pageNumber);
   garageWrapper.appendChild(carsContainer);

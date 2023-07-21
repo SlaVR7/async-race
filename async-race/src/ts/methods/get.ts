@@ -13,9 +13,8 @@ interface Winner {
   name: string;
 }
 
-export async function getCarName(currentWinnerId: number) {
+export async function getCar(currentWinnerId: number) {
   const response: Response = await fetch('http://127.0.0.1:3000/garage/');
   const winners = await response.json();
-  const winner = winners.find((item: Winner) => item.id === currentWinnerId);
-  return winner.name;
+  return winners.find((item: Winner) => item.id === currentWinnerId);
 }

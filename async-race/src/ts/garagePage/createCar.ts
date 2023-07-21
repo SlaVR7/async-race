@@ -45,6 +45,7 @@ export default async function createCar(carNumber: number) {
 
   const carsContainer: HTMLDivElement | null = document.querySelector('.carsContainer');
   const carWrapper: HTMLDivElement = document.createElement('div');
+  carWrapper.classList.add('carWrapper');
   carWrapper.setAttribute('carId', `${cars[carNumber].id}`);
   carWrapper.appendChild(carName);
   carWrapper.appendChild(selectCarButton);
