@@ -1,5 +1,6 @@
 export default function createMainPagesButtons(): void {
   const mainPagesButtonsWrapper: HTMLDivElement = document.createElement('div');
+  mainPagesButtonsWrapper.id = 'mainPagesButtons';
 
   const toGarageBtn: HTMLButtonElement = document.createElement('button');
   toGarageBtn.classList.add('smallMargins');

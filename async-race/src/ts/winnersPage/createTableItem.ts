@@ -1,8 +1,13 @@
 import car from '../svgImages/carImage';
-import { getWinners, getCar } from '../methods/get';
+import { getCar } from '../methods/get';
 
-export default async function createTableItem(currentWinner: number) {
-  const winners = await getWinners();
+interface Winners {
+  id: number,
+  wins: number,
+  time: number
+}
+
+export default async function createTableItem(currentWinner: number, winners: Winners[]) {
   if (winners.length <= currentWinner) return;
   const currentWinnerId = winners[currentWinner].id;
   const currentCar = await getCar(currentWinnerId);
@@ -16,8 +21,8 @@ export default async function createTableItem(currentWinner: number) {
 
   const carCell = document.createElement('td');
   const carImage = document.createElement('div');
-  carCell.appendChild(carImage);
-  // carImage.classList.add('car');
+  carCell.append(carImage);
+
   const carColored = car.replace('currentColor', `${currentCarColor}`);
   carImage.innerHTML = carColored.replace('100px', '51px').replace('50px', '30px');
 
@@ -25,15 +30,11 @@ export default async function createTableItem(currentWinner: number) {
   nameCell.innerText = currentCarName;
 
   const winsCell = document.createElement('td');
-  winsCell.innerText = winners[currentWinner].wins;
+  winsCell.innerText = winners[currentWinner].wins.toString();
 
   const timeCell = document.createElement('td');
-  timeCell.innerText = winners[currentWinner].time;
+  timeCell.innerText = winners[currentWinner].time.toString();
 
-  if (table) table.appendChild(row);
-  row.appendChild(numberCell);
-  row.appendChild(carCell);
-  row.appendChild(nameCell);
-  row.appendChild(winsCell);
-  row.appendChild(timeCell);
+  if (table) table.append(row);
+  row.append(numberCell, carCell, nameCell, winsCell, timeCell);
 }

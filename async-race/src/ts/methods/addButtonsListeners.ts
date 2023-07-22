@@ -8,6 +8,7 @@ import { openPrevGarPage, openNextGarPage, openPrevWinPage, openNextWinPage } fr
 import generateCars from "../garagePage/generateCars";
 import startCar from "./startCar";
 import startRace from "./startRace";
+import createTable from "../winnersPage/createTable";
 
 export default function addButtonsListeners(): void {
   const garageButton: HTMLButtonElement | null = document.querySelector('#garageBtn');
@@ -23,7 +24,6 @@ export default function addButtonsListeners(): void {
   const nextWinnersPage = document.querySelector('#nextWinnersButton');
   const startButtons = document.querySelectorAll('.startButton');
   const startRaceButton = document.querySelector('#startRaceButton');
-  const resetRaceButton = document.querySelector('#resetRaceButton');
   const nameInput: HTMLInputElement | null = document.querySelector('#carNameInput');
   const colorInput: HTMLInputElement | null = document.querySelector('#carColorInput');
 
@@ -67,5 +67,5 @@ export default function addButtonsListeners(): void {
   });
 
   startRaceButton?.addEventListener('click', startRace);
-  // resetRaceButton?.add
+
 }

@@ -35,6 +35,16 @@ td, th {
   padding: 3px 10px;
 }
 
+th {
+  font-size: 17px;
+}
+
+.arrow {
+  width: 15px;
+  margin-left: 5px;
+  transform: translateY(4px);
+}
+
 .selectAnimate {
   animation: gradient-border .7s infinite;
   border: 2px solid;
@@ -60,4 +70,9 @@ td, th {
   font-size: xx-large;
   font-weight: bold;
   color: gold;
+  z-index: 10;
+}
+
+#wins, #bestTime {
+  cursor: pointer;
 }
