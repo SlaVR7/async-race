@@ -1,6 +1,7 @@
 import { getWinners } from '../methods/get';
+import { Winners } from '../interfaces';
 
-export default async function createWinnersFooter() {
+export default async function createWinnersFooter(): Promise<void> {
   const prevPageButton: HTMLButtonElement = document.createElement('button');
   prevPageButton.classList.add('smallMargins');
   prevPageButton.id = 'prevWinnersButton';
@@ -16,11 +17,10 @@ export default async function createWinnersFooter() {
   }
 
   const currentPage: string | null = localStorage.getItem('winnersPage');
-  const winnersNumber = await getWinners();
+  const winnersNumber: Winners[] = await getWinners();
   if (currentPage && +currentPage === Math.ceil(winnersNumber.length / 10)) {
     nextPageButton.disabled = true;
   }
 
-  document.body.appendChild(prevPageButton);
-  document.body.appendChild(nextPageButton);
+  document.body.append(prevPageButton, nextPageButton);
 }

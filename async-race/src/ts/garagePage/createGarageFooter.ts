@@ -1,6 +1,6 @@
 import { getCars } from '../methods/get';
 
-export default async function createGarageFooter() {
+export default async function createGarageFooter(): Promise<void> {
   const prevPageButton: HTMLButtonElement = document.createElement('button');
   prevPageButton.classList.add('smallMargins');
   prevPageButton.id = 'prevGaragePage';
@@ -21,6 +21,5 @@ export default async function createGarageFooter() {
     nextPageButton.disabled = true;
   }
 
-  document.body.appendChild(prevPageButton);
-  document.body.appendChild(nextPageButton);
+  document.body.append(prevPageButton, nextPageButton);
 }

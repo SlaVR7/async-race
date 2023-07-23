@@ -1,13 +1,13 @@
 import { getCars } from '../methods/get';
 import createCar from './createCar';
 
-export default async function createGarage() {
+export default async function createGarage(): Promise<void> {
   if (!localStorage.getItem('page')) localStorage.setItem('page', '1');
-  const page = localStorage.getItem('page');
+  const page: string | null = localStorage.getItem('page');
   const carPerPage: number = 7;
   const garageWrapper: HTMLDivElement = document.createElement('div');
 
-  const winnerMessage = document.createElement('div');
+  const winnerMessage: HTMLDivElement = document.createElement('div');
   winnerMessage.classList.add('winnerMessage');
 
   const numberOfCars = await getCars();
@@ -21,17 +21,16 @@ export default async function createGarage() {
   const carsContainer: HTMLDivElement = document.createElement('div');
   carsContainer.classList.add('carsContainer');
 
-  document.body.appendChild(garageWrapper);
-  garageWrapper.appendChild(winnerMessage);
-  garageWrapper.appendChild(garageTitle);
-  garageWrapper.appendChild(pageNumber);
-  garageWrapper.appendChild(carsContainer);
+  document.body.append(garageWrapper);
+  garageWrapper.append(winnerMessage, garageTitle, pageNumber, carsContainer);
+
+  const cars = await getCars();
 
   if (page) {
     const initialCar: number = 7 * (+page - 1);
 
-    for (let i = initialCar; i < initialCar + carPerPage; i += 1) {
-      await createCar(i);
+    for (let i: number = initialCar; i < initialCar + carPerPage; i += 1) {
+      createCar(i, cars);
     }
   }
 }

@@ -5,7 +5,7 @@ export default function createCreateBlock(): void {
   carNameInput.setAttribute('type', 'text');
   carNameInput.classList.add('smallMargins');
   carNameInput.id = 'carNameInput';
-  const nameValue = localStorage.getItem('nameInput');
+  const nameValue: string | null = localStorage.getItem('nameInput');
   if (nameValue !== null) {
     carNameInput.value = nameValue;
   }
@@ -14,7 +14,7 @@ export default function createCreateBlock(): void {
   carColorInput.setAttribute('type', 'color');
   carColorInput.classList.add('smallMargins');
   carColorInput.id = 'carColorInput';
-  const colorValue = localStorage.getItem('colorInput');
+  const colorValue: string | null = localStorage.getItem('colorInput');
   if (colorValue !== null) {
     carColorInput.value = colorValue;
   }
@@ -30,8 +30,5 @@ export default function createCreateBlock(): void {
   updateCarButton.disabled = true;
 
   document.body.appendChild(createBlockWrapper);
-  createBlockWrapper.appendChild(carNameInput);
-  createBlockWrapper.appendChild(carColorInput);
-  createBlockWrapper.appendChild(createCarButton);
-  createBlockWrapper.appendChild(updateCarButton);
+  createBlockWrapper.append(carNameInput, carColorInput, createCarButton, updateCarButton);
 }

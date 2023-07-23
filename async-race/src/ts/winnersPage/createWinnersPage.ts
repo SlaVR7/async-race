@@ -5,7 +5,7 @@ import createWinnersFooter from './createWinnersFooter';
 
 export default function createWinnersPage(): void {
   createMainPagesButtons();
-  createTable().then(() => {
+  createTable().then((): void => {
     createWinnersFooter()
       .then(addButtonsListeners);
   });

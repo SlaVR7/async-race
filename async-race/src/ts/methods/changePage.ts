@@ -1,6 +1,7 @@
 import createGaragePage from '../garagePage/createGarapePage';
-import {getCars, getWinners} from "./get";
-import createWinnersPage from "../winnersPage/createWinnersPage";
+import { getCars, getWinners } from './get';
+import createWinnersPage from '../winnersPage/createWinnersPage';
+import { Cars, Winners } from '../interfaces';
 
 export function openPrevGarPage(): void {
   const currentPage: string | null = localStorage.getItem('page');
@@ -10,9 +11,9 @@ export function openPrevGarPage(): void {
   createGaragePage();
 }
 
-export async function openNextGarPage() {
+export async function openNextGarPage(): Promise<void> {
   const currentPage: string | null = localStorage.getItem('page');
-  const carsNumber = await getCars();
+  const carsNumber: Cars[] = await getCars();
   if (currentPage && +currentPage === Math.ceil(carsNumber.length / 7)) return;
   if (currentPage) localStorage.setItem('page', `${+currentPage + 1}`);
   document.body.innerHTML = '';
@@ -27,9 +28,9 @@ export function openPrevWinPage(): void {
   createWinnersPage();
 }
 
-export async function openNextWinPage() {
+export async function openNextWinPage(): Promise<void> {
   const currentPage: string | null = localStorage.getItem('winnersPage');
-  const winsNumber = await getWinners();
+  const winsNumber: Winners[] = await getWinners();
   if (currentPage && +currentPage === Math.ceil(winsNumber.length / 10)) return;
   if (currentPage) localStorage.setItem('winnersPage', `${+currentPage + 1}`);
   document.body.innerHTML = '';

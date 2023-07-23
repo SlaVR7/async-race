@@ -12,7 +12,6 @@ export default function createMainPagesButtons(): void {
   toWinnersBtn.id = 'winnersButton';
   toWinnersBtn.innerText = 'TO WINNERS';
 
-  document.body.appendChild(mainPagesButtonsWrapper);
-  mainPagesButtonsWrapper.appendChild(toGarageBtn);
-  mainPagesButtonsWrapper.appendChild(toWinnersBtn);
+  document.body.append(mainPagesButtonsWrapper);
+  mainPagesButtonsWrapper.append(toGarageBtn, toWinnersBtn);
 }

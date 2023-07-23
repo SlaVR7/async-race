@@ -9,16 +9,18 @@ body {
 .road {
   display: flex;
   justify-content: space-between;
+  align-items: end;
 }
 
 .car {
   display: block;
   width: 100px;
   height: 50px;
+  margin-bottom: -6px;
 }
 
 .flag {
-  transform: translateX(-100px);
+  transform: translateX(-70px);
 }
 
 .border {

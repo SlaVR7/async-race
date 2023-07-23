@@ -17,8 +17,6 @@ export default function createGameProcessButtons(): void {
   generateCarsButton.id = 'generateCars';
   generateCarsButton.innerText = 'GENERATE CARS';
 
-  document.body.appendChild(gameProcessButtonsWrapper);
-  gameProcessButtonsWrapper.appendChild(raceButton);
-  gameProcessButtonsWrapper.appendChild(resetButton);
-  gameProcessButtonsWrapper.appendChild(generateCarsButton);
+  document.body.append(gameProcessButtonsWrapper);
+  gameProcessButtonsWrapper.append(raceButton, resetButton, generateCarsButton);
 }
