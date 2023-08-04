@@ -1,23 +1,35 @@
-import { getCars } from '../methods/get';
+import { Cars } from '../interfaces';
+import { carsPerPage } from '../constants';
 
-export default async function createGarageFooter(): Promise<void> {
-  const prevPageButton: HTMLButtonElement = document.createElement('button');
-  prevPageButton.classList.add('smallMargins');
-  prevPageButton.id = 'prevGaragePage';
-  prevPageButton.innerText = 'PREV PAGE';
+export function createPrevPageButton(id: string): HTMLButtonElement {
+  const button: HTMLButtonElement = document.createElement('button');
+  button.classList.add('smallMargins');
+  button.id = id;
+  button.innerText = 'PREV PAGE';
 
-  const nextPageButton: HTMLButtonElement = document.createElement('button');
-  nextPageButton.classList.add('smallMargins');
-  nextPageButton.id = 'nextGaragePage';
-  nextPageButton.innerText = 'NEXT PAGE';
+  return button;
+}
+
+export function createNextPageButton(id: string): HTMLButtonElement {
+  const button: HTMLButtonElement = document.createElement('button');
+  button.classList.add('smallMargins');
+  button.id = id;
+  button.innerText = 'NEXT PAGE';
+
+  return button;
+}
+
+export default async function createGarageFooter(cars: Cars[]): Promise<void> {
+  const nextPageButton: HTMLButtonElement = createNextPageButton('nextGaragePage');
+  const prevPageButton: HTMLButtonElement = createPrevPageButton('prevGaragePage')
 
   if (localStorage.getItem('page') === '1') {
     prevPageButton.disabled = true;
   }
 
   const currentPage: string | null = localStorage.getItem('page');
-  const carsNumber = await getCars();
-  if (currentPage && +currentPage === Math.ceil(carsNumber.length / 7)) {
+
+  if (currentPage && +currentPage === Math.ceil(cars.length / carsPerPage)) {
     nextPageButton.disabled = true;
   }
 

@@ -1,16 +1,10 @@
 import { getWinners } from '../methods/get';
 import { Winners } from '../interfaces';
+import { createNextPageButton, createPrevPageButton } from '../garagePage/createGarageFooter';
 
 export default async function createWinnersFooter(): Promise<void> {
-  const prevPageButton: HTMLButtonElement = document.createElement('button');
-  prevPageButton.classList.add('smallMargins');
-  prevPageButton.id = 'prevWinnersButton';
-  prevPageButton.innerText = 'PREV PAGE';
-
-  const nextPageButton: HTMLButtonElement = document.createElement('button');
-  nextPageButton.classList.add('smallMargins');
-  nextPageButton.id = 'nextWinnersButton';
-  nextPageButton.innerText = 'NEXT PAGE';
+  const prevPageButton: HTMLButtonElement = createPrevPageButton('prevWinnersButton');
+  const nextPageButton: HTMLButtonElement = createNextPageButton('nextWinnersButton');
 
   if (localStorage.getItem('winnersPage') === '1') {
     prevPageButton.disabled = true;

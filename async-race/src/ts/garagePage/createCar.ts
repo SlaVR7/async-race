@@ -23,25 +23,33 @@ function createButtons(): HTMLButtonElement[] {
   return [selectCarButton, removeCarButton, startCarButton, stopCarButton];
 }
 
-function createImages(): HTMLDivElement[] {
+function createRoadImage(): HTMLDivElement {
   const road: HTMLDivElement = document.createElement('div');
   road.classList.add('road');
 
+  return road;
+}
+
+function createFlagImage(): HTMLDivElement {
   const flagImage: HTMLDivElement = document.createElement('div');
   flagImage.classList.add('flag');
   flagImage.innerHTML = flag;
 
+  return flagImage;
+}
+
+function createBorderImage(): HTMLDivElement {
   const border: HTMLDivElement = document.createElement('div');
   border.classList.add('border');
 
-  return [road, flagImage, border];
+  return border;
 }
 
 export default function createCar(carNumber: number, cars: Cars[]): void {
   if (cars.length <= carNumber) return;
 
   const buttons: HTMLButtonElement[] = createButtons();
-  const road: HTMLDivElement = createImages()[0];
+  const road: HTMLDivElement = createRoadImage();
 
   const carName: HTMLSpanElement = document.createElement('span');
   carName.innerText = cars[carNumber].name;
@@ -50,13 +58,14 @@ export default function createCar(carNumber: number, cars: Cars[]): void {
   carImage.classList.add('car');
   carImage.innerHTML = car.replace('currentColor', `${cars[carNumber].color}`);
 
-  road.append(carImage, createImages()[1]);
+  road.append(carImage, createFlagImage());
 
   const carsContainer: HTMLDivElement | null = document.querySelector('.carsContainer');
   const carWrapper: HTMLDivElement = document.createElement('div');
   carWrapper.classList.add('carWrapper');
   carWrapper.setAttribute('carId', `${cars[carNumber].id}`);
   carWrapper
-    .append(carName, buttons[0], buttons[1], buttons[2], buttons[3], road, createImages()[2]);
+    .append(carName, buttons[0], buttons[1], buttons[2], buttons[3], road, createBorderImage());
+
   if (carsContainer) carsContainer.appendChild(carWrapper);
 }

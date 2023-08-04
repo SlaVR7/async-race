@@ -1,4 +1,5 @@
 import { Car } from '../interfaces';
+import { getURL } from './get';
 
 function resetRace(animId: number, element: HTMLDivElement | null | undefined, winnerMessage: HTMLDivElement | null, isWinnerExist: boolean): void {
   const startRaceButton: HTMLButtonElement | null = document.querySelector('#startRaceButton');
@@ -24,7 +25,7 @@ export default function startRace(): void {
   let isWinnerExist: boolean = false;
 
   wrappersId.forEach(async (id: number): Promise<void> => {
-    const responseStart: Response = await fetch(`http://127.0.0.1:3000/engine/?id=${id}&status=started`, { method: 'PATCH' });
+    const responseStart: Response = await fetch(`${getURL('engine')}/?id=${id}&status=started`, { method: 'PATCH' });
     const { velocity, distance } = await responseStart.json();
     const time: number = distance / velocity;
     const element: HTMLDivElement | null | undefined = document.querySelector(`[carId="${id}"]`)?.querySelector('.car');
@@ -47,7 +48,7 @@ export default function startRace(): void {
     requestAnimationFrame(animate);
 
     resetRaceButton?.addEventListener('click', () => resetRace(animId, element, winnerMessage, isWinnerExist));
-    const responseDrive: Response = await fetch(`http://127.0.0.1:3000/engine/?id=${id}&status=drive`, { method: 'PATCH' });
+    const responseDrive: Response = await fetch(`${getURL('engine')}/?id=${id}&status=drive`, { method: 'PATCH' });
     if (responseDrive.status === 500) cancelAnimationFrame(animId);
   });
 }
@@ -60,7 +61,7 @@ async function endRace(time: number, id: number): Promise<void> {
 
   if (winnerMessage) winnerMessage.innerText = `${name} went first [${(time / 1000).toFixed(2)}s]`;
   resetRaceButton?.removeAttribute('disabled');
-  const winResponse: Response = await fetch(`http://127.0.0.1:3000/winners/${id}`);
+  const winResponse: Response = await fetch(`${getURL('winners')}/${id}`);
   const winObj = await winResponse.json();
   let winsNumber = winObj.wins;
   let winsTime = winObj.time;
@@ -70,14 +71,14 @@ async function endRace(time: number, id: number): Promise<void> {
   } else winsNumber += 1;
   if (winObj.time) {
     const updatedWinner: Car = { wins: winsNumber, time: winsTime };
-    await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+    await fetch(`${getURL('winners')}/${id}`, {
       headers: { 'Content-Type': 'application/json' },
       method: 'PUT',
       body: JSON.stringify(updatedWinner),
     });
   } else {
     const winner: Car = { id, wins: winsNumber, time: winsTime };
-    await fetch('http://127.0.0.1:3000/winners', {
+    await fetch(`${getURL('winners')}`, {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(winner),

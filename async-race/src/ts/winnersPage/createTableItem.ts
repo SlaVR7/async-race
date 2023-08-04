@@ -1,6 +1,6 @@
 import car from '../svgImages/carImage';
 import { getCar } from '../methods/get';
-import {Cars, Winners} from '../interfaces';
+import { Cars, Winners } from '../interfaces';
 
 export default async function createTableItem(currentWinner: number, winners: Winners[]): Promise<void> {
   if (winners.length <= currentWinner) return;

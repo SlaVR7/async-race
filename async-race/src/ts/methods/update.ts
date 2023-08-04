@@ -1,5 +1,6 @@
 import createGaragePage from '../garagePage/createGarapePage';
 import { UpdatedCar } from '../interfaces';
+import { getURL } from './get';
 
 export default async function updateCar(): Promise<void> {
   const carNameInput: HTMLInputElement | null = document.querySelector('#carNameInput');
@@ -12,7 +13,7 @@ export default async function updateCar(): Promise<void> {
     color: carColorInput?.value,
   };
 
-  await fetch(`http://127.0.0.1:3000/garage/${id}`, {
+  await fetch(`${getURL('garage')}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(updatedCar),
