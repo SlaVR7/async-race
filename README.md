@@ -1,0 +1,1 @@
+Hi there! This project implements a simple game in which you can create, edit and delete cars, participate in races. Each action executes a request to the server, analyzes its response, and then one or another logic of the game is executed.
