@@ -1,7 +1,7 @@
 import createGaragePage from '../garagePage/createGarapePage';
 import { getCars, getURL } from './get';
 import { AddedCar, Cars } from '../interfaces';
-import { carsPerPage } from '../constants';
+import { CARS_PER_PAGE } from '../constants';
 
 export default async function addNewCar(): Promise<void> {
   const carNameInput: HTMLInputElement | null = document.querySelector('#carNameInput');
@@ -21,7 +21,7 @@ export default async function addNewCar(): Promise<void> {
     body: JSON.stringify(addedCar),
   });
 
-  if (currentPage && (carsNumber + 1) % carsPerPage === 1) localStorage.setItem('page', `${+currentPage + 1}`);
+  if (currentPage && (carsNumber + 1) % CARS_PER_PAGE === 1) localStorage.setItem('page', `${+currentPage + 1}`);
 
   document.body.innerHTML = '';
   createGaragePage();

@@ -6,12 +6,10 @@
   "moduleResolution": "nodenext",
   "scripts": {
     "lint": "eslint --fix src",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve",
+    "start": "webpack serve",
     "deploy": "npm run build && npx gh-pages -d dist -e async-race"
   },
   "author": "",
@@ -22,7 +20,6 @@
     "@webpack-cli/generators": "^3.0.7",
     "css-loader": "^6.8.1",
     "eslint": "^8.44.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "file-loader": "^6.2.0",

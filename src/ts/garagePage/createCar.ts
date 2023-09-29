@@ -46,7 +46,9 @@ function createBorderImage(): HTMLDivElement {
 }
 
 export default function createCar(carNumber: number, cars: Cars[]): void {
-  if (cars.length <= carNumber) return;
+  if (cars.length <= carNumber) {
+    return;
+  }
 
   const buttons: HTMLButtonElement[] = createButtons();
   const road: HTMLDivElement = createRoadImage();

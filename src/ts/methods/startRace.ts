@@ -1,13 +1,12 @@
 import { Car } from '../interfaces';
 import { getURL } from './get';
 
-function resetRace(animId: number, element: HTMLDivElement | null | undefined, winnerMessage: HTMLDivElement | null, isWinnerExist: boolean): void {
+function resetRace(animId: number, element: HTMLDivElement | null | undefined, winnerMessage: HTMLDivElement | null): void {
   const startRaceButton: HTMLButtonElement | null = document.querySelector('#startRaceButton');
   const startButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.startButton');
   cancelAnimationFrame(animId);
   if (element) element.style.transform = 'translateX(0)';
   if (winnerMessage) winnerMessage.innerText = '';
-  // isWinnerExist = false;
   startButtons.forEach((startBtn: HTMLButtonElement) => startBtn.removeAttribute('disabled'));
   startRaceButton?.removeAttribute('disabled');
 }
@@ -47,7 +46,7 @@ export default function startRace(): void {
     };
     requestAnimationFrame(animate);
 
-    resetRaceButton?.addEventListener('click', () => resetRace(animId, element, winnerMessage, isWinnerExist));
+    resetRaceButton?.addEventListener('click', () => resetRace(animId, element, winnerMessage));
     const responseDrive: Response = await fetch(`${getURL('engine')}/?id=${id}&status=drive`, { method: 'PATCH' });
     if (responseDrive.status === 500) cancelAnimationFrame(animId);
   });

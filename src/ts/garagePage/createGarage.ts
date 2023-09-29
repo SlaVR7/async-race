@@ -1,6 +1,6 @@
 import createCar from './createCar';
 import { Cars } from '../interfaces';
-import { carsPerPage } from '../constants';
+import { CARS_PER_PAGE } from '../constants';
 
 export default async function createGarage(cars: Cars[]): Promise<void> {
   if (!localStorage.getItem('page')) localStorage.setItem('page', '1');
@@ -23,9 +23,9 @@ export default async function createGarage(cars: Cars[]): Promise<void> {
   garageWrapper.append(winnerMessage, garageTitle, pageNumber, carsContainer);
 
   if (page) {
-    const initialCar: number = carsPerPage * (+page - 1);
+    const initialCar: number = CARS_PER_PAGE * (+page - 1);
 
-    for (let i: number = initialCar; i < initialCar + carsPerPage; i += 1) {
+    for (let i: number = initialCar; i < initialCar + CARS_PER_PAGE; i += 1) {
       createCar(i, cars);
     }
   }
