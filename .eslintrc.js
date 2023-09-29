@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
-    'airbnb',
   ],
   parserOptions: {
     ecmaVersion: 2021,

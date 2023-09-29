@@ -7,7 +7,7 @@ function resetRace(animId: number, element: HTMLDivElement | null | undefined, w
   cancelAnimationFrame(animId);
   if (element) element.style.transform = 'translateX(0)';
   if (winnerMessage) winnerMessage.innerText = '';
-  isWinnerExist = false;
+  // isWinnerExist = false;
   startButtons.forEach((startBtn: HTMLButtonElement) => startBtn.removeAttribute('disabled'));
   startRaceButton?.removeAttribute('disabled');
 }

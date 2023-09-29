@@ -22,5 +22,3 @@ export async function getCar(currentWinnerId: number): Promise<Cars> {
   const winners = await response.json();
   return winners.find((item: Winner): boolean => item.id === currentWinnerId);
 }
-
-

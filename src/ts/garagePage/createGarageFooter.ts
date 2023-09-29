@@ -21,7 +21,7 @@ export function createNextPageButton(id: string): HTMLButtonElement {
 
 export default async function createGarageFooter(cars: Cars[]): Promise<void> {
   const nextPageButton: HTMLButtonElement = createNextPageButton('nextGaragePage');
-  const prevPageButton: HTMLButtonElement = createPrevPageButton('prevGaragePage')
+  const prevPageButton: HTMLButtonElement = createPrevPageButton('prevGaragePage');
 
   if (localStorage.getItem('page') === '1') {
     prevPageButton.disabled = true;
